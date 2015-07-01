@@ -32,6 +32,7 @@ filetype plugin indent on
    set smarttab
    set autoindent
    set smartindent
+   " autocmd BufWritePre * :%s/\s\+$//e
 :endif
 
 " misc
@@ -50,7 +51,7 @@ set mousehide mouse=a
 set number
 set wildmenu wildignore=*.o,*~,*.pyc
 
-" dumb as fuck paste default
+" replace dumb as fuck paste default
 vnoremap p "_p
 vnoremap <leader>p p
 
@@ -93,7 +94,6 @@ set autoread
 set hidden
 set confirm
 command W w !sudo tee % > /dev/null
-" autocmd BufWritePre * :%s/\s\+$//e
 
 " Search
 set hlsearch
