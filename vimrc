@@ -86,6 +86,10 @@ vnoremap // :nohlsearch<CR>
 
 " Easy Motion
 let g:EasyMotion_do_mapping=0
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+hi link EasyMotionTarget2First ErrorMsg
+hi link EasyMotionTarget2Second ErrorMsg
 nmap s <Plug>(easymotion-bd-w)
 vmap s <Plug>(easymotion-bd-w)
 nmap \f <Plug>(easymotion-bd-f)
@@ -100,3 +104,6 @@ nnoremap <leader>z <C-W>_<C-W><Bar>
 vnoremap <leader>z <C-W>_<C-W><Bar>
 nnoremap <leader><leader>z <C-W>=
 vnoremap <leader><leader>z <C-W>=
+
+" Syntax
+syntax enable
