@@ -16,6 +16,24 @@ Plugin 'scrooloose/nerdcommenter'
 call vundle#end()
 filetype plugin indent on
 
+:if filereadable( "/etc/vimrc" )
+   source /etc/vimrc
+:endif
+
+" arista specific things
+:if filereadable( $VIM . "/vimfiles/arista.vim" )
+   source $VIM/vimfiles/arista.vim
+   set colorcolumn=86
+:else
+   set tabstop=4
+   set shiftwidth=4
+   set softtabstop=4
+   set expandtab
+   set smarttab
+   set autoindent
+   set smartindent
+:endif
+
 " misc
 set backspace=2
 set encoding=utf-8
@@ -40,10 +58,19 @@ vnoremap <leader>p p
 set diffopt+=vertical
 set splitbelow
 set splitright
+" why the fuck isn't there a map that is nv or nvi -_-
 nnoremap <C-J> <C-W><C-J>
+vnoremap <C-J> <C-W><C-J>
+inoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
+vnoremap <C-K> <C-W><C-K>
+inoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
+vnoremap <C-L> <C-W><C-L>
+inoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+vnoremap <C-H> <C-W><C-H>
+inoremap <C-H> <C-W><C-H>
 
 " Movement
 set whichwrap+=<,>,h,l,[,]
@@ -52,14 +79,6 @@ vnoremap j gj
 nnoremap k gk
 vnoremap k gk
 
-" tabs
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set smarttab
-set autoindent
-set smartindent
 
 " use ag in ctrlp
 " airline
