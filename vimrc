@@ -50,7 +50,7 @@ set nostartofline
 set mousehide mouse=a
 set number
 set wildmenu wildignore=*.o,*~,*.pyc
-
+set ttimeoutlen=100
 " replace dumb as fuck paste default
 vnoremap p "_p
 vnoremap <leader>p p
@@ -74,11 +74,16 @@ vnoremap <C-H> <C-W><C-H>
 inoremap <C-H> <C-W><C-H>
 
 " Movement
+set nostartofline
 set whichwrap+=<,>,h,l,[,]
 nnoremap j gj
 vnoremap j gj
 nnoremap k gk
 vnoremap k gk
+nnoremap H ^
+vnoremap H ^
+nnoremap L g_
+vnoremap L g_
 
 
 " use ag in ctrlp
