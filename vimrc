@@ -52,7 +52,7 @@ set number
 set wildmenu wildignore=*.o,*~,*.pyc
 
 " replace dumb as fuck paste default
-vnoremap p "_p
+vnoremap p "_dP
 vnoremap <leader>p p
 
 " Windows
@@ -100,8 +100,8 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-nnoremap // :nohlsearch<CR>
-vnoremap // :nohlsearch<CR>
+nnoremap <leader>/ :nohlsearch<CR>
+vnoremap <leader>/ :nohlsearch<CR>
 
 " Easy Motion
 let g:EasyMotion_do_mapping=0
