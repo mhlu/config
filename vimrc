@@ -9,8 +9,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
+
 
 " end plugins
 call vundle#end()
@@ -25,6 +25,7 @@ filetype plugin indent on
    source $VIM/vimfiles/arista.vim
    set colorcolumn=86
 :else
+   syntax enable
    set tabstop=4
    set shiftwidth=4
    set softtabstop=4
@@ -36,6 +37,8 @@ filetype plugin indent on
 :endif
 
 " misc
+vnoremap < <gv
+vnoremap > >gv>
 set backspace=2
 set encoding=utf-8
 set t_Co=256
@@ -51,6 +54,7 @@ set mousehide mouse=a
 set number
 set wildmenu wildignore=*.o,*~,*.pyc
 set ttimeoutlen=100
+
 " replace dumb as fuck paste default
 vnoremap p "_dP
 vnoremap <leader>p p
@@ -59,6 +63,7 @@ vnoremap <leader>p p
 set diffopt+=vertical
 set splitbelow
 set splitright
+
 " why the fuck isn't there a map that is nv or nvi -_-
 nnoremap <C-J> <C-W><C-J>
 vnoremap <C-J> <C-W><C-J>
@@ -110,10 +115,10 @@ vnoremap <leader>/ :nohlsearch<CR>
 
 " Easy Motion
 let g:EasyMotion_do_mapping=0
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-hi link EasyMotionTarget2First ErrorMsg
-hi link EasyMotionTarget2Second ErrorMsg
+"hi link EasyMotionTarget ErrorMsg
+"hi link EasyMotionShade  Comment
+"hi link EasyMotionTarget2First ErrorMsg
+"hi link EasyMotionTarget2Second ErrorMsg
 nmap s <Plug>(easymotion-bd-w)
 vmap s <Plug>(easymotion-bd-w)
 nmap \f <Plug>(easymotion-bd-f)
@@ -128,6 +133,3 @@ nnoremap <leader>z <C-W>_<C-W><Bar>
 vnoremap <leader>z <C-W>_<C-W><Bar>
 nnoremap <leader><leader>z <C-W>=
 vnoremap <leader><leader>z <C-W>=
-
-" Syntax
-syntax enable
