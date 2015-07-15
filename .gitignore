@@ -1,2 +1,8 @@
 fish/*
+fish/functions/cdp.fish
+fish/functions/cdt.fish
+fish/functions/cdn.fish
+fish/functions/cdpt.fish
+fish/functions/m.fish
 !fish/functions
+.tmux.conf

@@ -55,8 +55,11 @@ set number
 set wildmenu wildignore=*.o,*~,*.pyc
 set ttimeoutlen=100
 
+" everytime you use octal, increment this count - count=0
+set nrformats=
+
 " replace dumb as fuck paste default
-vnoremap p "_dP
+vnoremap p "_dp
 vnoremap <leader>p p
 
 " Windows
