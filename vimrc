@@ -6,10 +6,12 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " begin plugins
+Plugin 'kien/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'bitc/vim-hdevtools'
 
 
 " end plugins
@@ -35,6 +37,10 @@ filetype plugin indent on
    set smartindent
    " autocmd BufWritePre * :%s/\s\+$//e
 :endif
+
+"display tabs and trailing spaces
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 " misc
 vnoremap < <gv
@@ -136,3 +142,20 @@ nnoremap <leader>z <C-W>_<C-W><Bar>
 vnoremap <leader>z <C-W>_<C-W><Bar>
 nnoremap <leader><leader>z <C-W>=
 vnoremap <leader><leader>z <C-W>=
+
+" syntastic
+" On by default
+let g:syntastic_mode_map = { 'mode': 'active',
+    \ 'active_filetypes': [],
+    \ 'passive_filetypes': [] }
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" hdev tools
+au FileType haskell nnoremap <leader><t> :HdevtoolsType<CR>
+au FileType haskell nnoremap <leader><c> :HdevtoolsClear<CR>
