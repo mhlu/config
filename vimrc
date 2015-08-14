@@ -38,7 +38,7 @@ filetype plugin indent on
 
 " misc
 vnoremap < <gv
-vnoremap > >gv>
+vnoremap > >gv
 set backspace=2
 set encoding=utf-8
 set t_Co=256
@@ -58,8 +58,8 @@ set ttimeoutlen=100
 " everytime you use octal, increment this count - count=0
 set nrformats=
 
-" replace dumb as fuck paste default
-vnoremap p "_dp
+" not what i want to do, but whatever
+vnoremap p "0p
 vnoremap <leader>p p
 
 " Windows
