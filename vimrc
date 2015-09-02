@@ -22,21 +22,16 @@ filetype plugin indent on
    source /etc/vimrc
 :endif
 
-" arista specific things
-:if filereadable( $VIM . "/vimfiles/arista.vim" )
-   source $VIM/vimfiles/arista.vim
-   set colorcolumn=86
-:else
-   syntax enable
-   set tabstop=4
-   set shiftwidth=4
-   set softtabstop=4
-   set expandtab
-   set smarttab
-   set autoindent
-   set smartindent
-   " autocmd BufWritePre * :%s/\s\+$//e
-:endif
+" format
+set colorcolumn=86
+syntax enable
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+set autoindent
+set smartindent
 
 "display tabs and trailing spaces
 set list
@@ -65,15 +60,13 @@ set ttimeoutlen=100
 set nrformats=
 
 " not what i want to do, but whatever
-vnoremap p "0p
-vnoremap <leader>p p
+"vnoremap p "0p
+"vnoremap <leader>p p
 
 " Windows
 set diffopt+=vertical
 set splitbelow
 set splitright
-
-" why the fuck isn't there a map that is nv or nvi -_-
 nnoremap <C-J> <C-W><C-J>
 vnoremap <C-J> <C-W><C-J>
 inoremap <C-J> <C-W><C-J>
@@ -145,7 +138,7 @@ vnoremap <leader><leader>z <C-W>=
 
 " syntastic
 " On by default
-let g:syntastic_mode_map = { 'mode': 'active',
+let g:syntastic_mode_map = { 'mode': 'passive',
     \ 'active_filetypes': [],
     \ 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
