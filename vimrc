@@ -6,6 +6,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " begin plugins
+Plugin 'derekwyatt/vim-scala'
 Plugin 'kien/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
@@ -23,7 +24,7 @@ filetype plugin indent on
 :endif
 
 " format
-set colorcolumn=86
+"set colorcolumn=86
 syntax enable
 set tabstop=4
 set shiftwidth=4
