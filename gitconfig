@@ -1,0 +1,3 @@
+git config --global user.name 'mhlu'
+git config --global user.email 'mhlu@uwaterloo.ca'
+git config --global core.editor vim
