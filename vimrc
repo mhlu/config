@@ -6,13 +6,16 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " begin plugins
-Plugin 'derekwyatt/vim-scala'
 Plugin 'kien/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'bitc/vim-hdevtools'
+Plugin 'klen/python-mode'
+Plugin 'Raimondi/delimitMate'
+Plugin 'pythoncomplete'
+" Plugin 'bitc/vim-hdevtools'
 
 
 " end plugins
@@ -24,7 +27,7 @@ filetype plugin indent on
 :endif
 
 " format
-"set colorcolumn=86
+set colorcolumn=81
 syntax enable
 set tabstop=4
 set shiftwidth=4
@@ -63,6 +66,9 @@ set nrformats=
 " not what i want to do, but whatever
 "vnoremap p "0p
 "vnoremap <leader>p p
+
+vnoremap <leader>w :w
+vnoremap <leader>q :q
 
 " Windows
 set diffopt+=vertical
@@ -118,18 +124,20 @@ vnoremap <leader>/ :nohlsearch<CR>
 
 " Easy Motion
 let g:EasyMotion_do_mapping=0
-"hi link EasyMotionTarget ErrorMsg
-"hi link EasyMotionShade  Comment
-"hi link EasyMotionTarget2First ErrorMsg
-"hi link EasyMotionTarget2Second ErrorMsg
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+hi link EasyMotionTarget2First ErrorMsg
+hi link EasyMotionTarget2Second ErrorMsg
 nmap s <Plug>(easymotion-bd-w)
 vmap s <Plug>(easymotion-bd-w)
 nmap \f <Plug>(easymotion-bd-f)
 nmap \f <Plug>(easymotion-bd-f)
 
 " NerdTree
-nnoremap <leader>t :NERDTreeToggle<CR>
-vnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <Leader>t :NERDTreeTabsToggle<CR>
+vnoremap <Leader>t :NERDTreeTabsToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
 
 " maximize and normalize a window
 nnoremap <leader>z <C-W>_<C-W><Bar>
@@ -151,5 +159,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " hdev tools
-au FileType haskell nnoremap <leader><t> :HdevtoolsType<CR>
-au FileType haskell nnoremap <leader><c> :HdevtoolsClear<CR>
+" au FileType haskell nnoremap <leader><t> :HdevtoolsType<CR>
+" au FileType haskell nnoremap <leader><c> :HdevtoolsClear<CR>
+
+" python
+let g:pymode_rope_lookup_project = 0
