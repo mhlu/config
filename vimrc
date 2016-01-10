@@ -1,3 +1,5 @@
+" this file is organized as such
+" general config -> plugin config -> language specific config
 set nocompatible
 set shell=/bin/bash
 filetype off
@@ -12,11 +14,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'klen/python-mode'
 Plugin 'Raimondi/delimitMate'
-Plugin 'pythoncomplete'
-" Plugin 'bitc/vim-hdevtools'
-
+Plugin 'junegunn/vim-easy-align'
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+Plugin 'yonchu/accelerated-smooth-scroll'
+Plugin 'davidhalter/jedi-vim'
 
 " end plugins
 call vundle#end()
@@ -25,6 +28,9 @@ filetype plugin indent on
 :if filereadable( "/etc/vimrc" )
    source /etc/vimrc
 :endif
+
+" leader
+let mapleader = " "
 
 " format
 set colorcolumn=81
@@ -36,14 +42,14 @@ set expandtab
 set smarttab
 set autoindent
 set smartindent
+vnoremap < <gv
+vnoremap > >gv
 
 "display tabs and trailing spaces
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 
 " misc
-vnoremap < <gv
-vnoremap > >gv
 set backspace=2
 set encoding=utf-8
 set t_Co=256
@@ -59,16 +65,25 @@ set mousehide mouse=a
 set number
 set wildmenu wildignore=*.o,*~,*.pyc
 set ttimeoutlen=100
-
+set cursorline
+set lazyredraw
+noremap <silent> Y y$
 " everytime you use octal, increment this count - count=0
 set nrformats=
 
-" not what i want to do, but whatever
-"vnoremap p "0p
-"vnoremap <leader>p p
+" maximize and normalize a window
+nnoremap <leader>z <C-W>_<C-W><Bar>
+vnoremap <leader>z <C-W>_<C-W><Bar>
+nnoremap <leader><leader>z <C-W>=
+vnoremap <leader><leader>z <C-W>=
 
-vnoremap <leader>w :w
-vnoremap <leader>q :q
+" quick save/quit
+nnoremap <leader>w :w<CR>
+vnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+vnoremap <leader>q :q<CR>
+nnoremap <leader>Q :wq<CR>
+vnoremap <leader>Q :wq<CR>
 
 " Windows
 set diffopt+=vertical
@@ -98,12 +113,6 @@ nnoremap H ^
 vnoremap H ^
 nnoremap L g_
 vnoremap L g_
-
-
-" use ag in ctrlp
-" airline
-" set laststatus=2
-
 
 " Buffer
 set nobackup
@@ -138,15 +147,7 @@ nnoremap <Leader>t :NERDTreeTabsToggle<CR>
 vnoremap <Leader>t :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
-
-" maximize and normalize a window
-nnoremap <leader>z <C-W>_<C-W><Bar>
-vnoremap <leader>z <C-W>_<C-W><Bar>
-nnoremap <leader><leader>z <C-W>=
-vnoremap <leader><leader>z <C-W>=
-
 " syntastic
-" On by default
 let g:syntastic_mode_map = { 'mode': 'passive',
     \ 'active_filetypes': [],
     \ 'passive_filetypes': [] }
@@ -158,9 +159,15 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" hdev tools
-" au FileType haskell nnoremap <leader><t> :HdevtoolsType<CR>
-" au FileType haskell nnoremap <leader><c> :HdevtoolsClear<CR>
+" airline/bufferline
+let g:bufferline_echo = 0
+set laststatus=2
 
-" python
-let g:pymode_rope_lookup_project = 0
+" jedi
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+
+" easy align
+" nmap ga <Plug>(EasyAlign)
+" xmap ga <Plug>(EasyAlign)
