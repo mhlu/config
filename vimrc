@@ -71,6 +71,10 @@ noremap <silent> Y y$
 " everytime you use octal, increment this count - count=0
 set nrformats=
 
+" copy/paste
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]''`]`'
+vnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]''`]`'
+
 " maximize and normalize a window
 nnoremap <leader>z <C-W>_<C-W><Bar>
 vnoremap <leader>z <C-W>_<C-W><Bar>

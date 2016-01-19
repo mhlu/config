@@ -1,4 +1,7 @@
-git config --global user.name 'mhlu'
-git config --global user.email 'mhlu@uwaterloo.ca'
-git config --global core.editor vim
-git config --global push.default simple
+[user]
+	name = mhlu
+	email = mhlu@uwaterloo.ca
+[core]
+	editor = vim
+[push]
+	default = simple
