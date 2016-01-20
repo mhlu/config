@@ -2,54 +2,28 @@
 " general config -> plugin config -> language specific config
 set nocompatible
 set shell=/bin/bash
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
 
-" begin plugins
-Plugin 'kien/ctrlp.vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Raimondi/delimitMate'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'bling/vim-airline'
-Plugin 'bling/vim-bufferline'
-Plugin 'yonchu/accelerated-smooth-scroll'
-Plugin 'davidhalter/jedi-vim'
-
-" end plugins
-call vundle#end()
-filetype plugin indent on
+call plug#begin('~/.vim/plugged')
+Plug 'kien/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Raimondi/delimitMate'
+Plug 'junegunn/vim-easy-align'
+Plug 'bling/vim-airline'
+Plug 'bling/vim-bufferline'
+Plug 'yonchu/accelerated-smooth-scroll'
+Plug 'davidhalter/jedi-vim'
+call plug#end()
 
 :if filereadable( "/etc/vimrc" )
    source /etc/vimrc
 :endif
 
-" leader
-let mapleader = " "
-
-" format
-set colorcolumn=81
-syntax enable
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set smarttab
-set autoindent
-set smartindent
-vnoremap < <gv
-vnoremap > >gv
-
-"display tabs and trailing spaces
-set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-
 " misc
+filetype plugin indent on
 set backspace=2
 set encoding=utf-8
 set t_Co=256
@@ -71,6 +45,29 @@ noremap <silent> Y y$
 " everytime you use octal, increment this count - count=0
 set nrformats=
 
+
+" leader
+let mapleader = " "
+
+" format
+set colorcolumn=81
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
+set autoindent
+set smartindent
+vnoremap < <gv
+vnoremap > >gv
+
+" syntax
+syntax enable
+set background=dark
+
+"display tabs and trailing spaces
+set list
+set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 " maximize and normalize a window
 nnoremap <leader>z <C-W>_<C-W><Bar>
 vnoremap <leader>z <C-W>_<C-W><Bar>
@@ -169,5 +166,5 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 
 " easy align
-" nmap ga <Plug>(EasyAlign)
-" xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
