@@ -63,11 +63,15 @@ vnoremap > >gv
 
 " syntax
 syntax enable
-set background=dark
 
 "display tabs and trailing spaces
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+
+" copy/paste
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]''`]`'
+vnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]''`]`'
+
 " maximize and normalize a window
 nnoremap <leader>z <C-W>_<C-W><Bar>
 vnoremap <leader>z <C-W>_<C-W><Bar>
