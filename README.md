@@ -1,6 +1,9 @@
 # config, the following instructions are for mac
 # first install command line tool
 
+# git
+ln -s ~/.config/gitconfig ~/.gitconfig
+
 # brew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
