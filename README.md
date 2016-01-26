@@ -18,6 +18,12 @@ chsh -s /usr/local/bin/fish
 
 # python
 brew install python3
+# pyvenv ~/venv
+# source ~/venv/bin/activate.fish 
+# pip install readline
+# pip install ipython
+# pip install numpy
+# pip install pandas
 
 # vim
 brew install vim --override-system-vi --without-python --with-python3
