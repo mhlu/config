@@ -6,16 +6,16 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle' }
+Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/delimitMate'
-Plug 'junegunn/vim-easy-align'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'yonchu/accelerated-smooth-scroll'
-Plug 'davidhalter/jedi-vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/syntastic', { 'for': ['python', 'cpp'] }
+Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 call plug#end()
 
 :if filereadable( "/etc/vimrc" )
@@ -140,8 +140,10 @@ hi link EasyMotionTarget2First ErrorMsg
 hi link EasyMotionTarget2Second ErrorMsg
 nmap s <Plug>(easymotion-bd-w)
 vmap s <Plug>(easymotion-bd-w)
-nmap \f <Plug>(easymotion-bd-f)
-nmap \f <Plug>(easymotion-bd-f)
+nmap S <Plug>(easymotion-bd-e)
+vmap S <Plug>(easymotion-bd-e)
+nmap <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>f <Plug>(easymotion-bd-f)
 
 " NerdTree
 nnoremap <Leader>t :NERDTreeTabsToggle<CR>
@@ -150,7 +152,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " syntastic
 let g:syntastic_mode_map = { 'mode': 'passive',
-    \ 'active_filetypes': [],
+    \ 'active_filetypes': ['python'],
     \ 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -159,6 +161,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+nnoremap <silent> <F5> :SyntasticCheck<CR>
+vnoremap <silent> <F5> :SyntasticCheck<CR>
+
 
 " airline/bufferline
 let g:bufferline_echo = 0
@@ -168,6 +173,9 @@ set laststatus=2
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
+let g:jedi#auto_initialization = 0
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#completions_command = "<C-Space>"
 
 " easy align
 nmap ga <Plug>(EasyAlign)
