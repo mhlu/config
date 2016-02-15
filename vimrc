@@ -16,6 +16,7 @@ Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/syntastic', { 'for': ['python', 'cpp'] }
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
+Plug 'bufkill.vim'
 call plug#end()
 
 :if filereadable( "/etc/vimrc" )
@@ -27,7 +28,7 @@ filetype plugin indent on
 set backspace=2
 set encoding=utf-8
 set t_Co=256
-set noeb vb t_vb=
+set noeb vb t_vb= "remove bells
 set ruler
 set ttyfast
 set showcmd
@@ -42,7 +43,6 @@ set ttimeoutlen=100
 set cursorline
 set lazyredraw
 noremap <silent> Y y$
-" everytime you use octal, increment this count - count=0
 set nrformats=
 
 
@@ -122,6 +122,10 @@ set noswapfile
 set autoread
 set hidden
 set confirm
+nmap <leader>p :bp<CR>
+vmap <leader>p :bp<CR>
+nmap <leader>n :bn<CR>
+vmap <leader>n :bn<CR>
 command W w !sudo tee % > /dev/null
 
 " Search
@@ -131,6 +135,15 @@ set smartcase
 set incsearch
 nnoremap <leader>/ :nohlsearch<CR>
 vnoremap <leader>/ :nohlsearch<CR>
+
+" Ctrl P
+nmap <C-n> :CtrlPBuffer<CR>
+vmap <C-n> :CtrlPBuffer<CR>
+
+" Buff Kill
+nmap <leader>k :BD<CR>
+vmap <leader>k :BD<CR>
+
 
 " Easy Motion
 let g:EasyMotion_do_mapping=0
@@ -142,8 +155,8 @@ nmap s <Plug>(easymotion-bd-w)
 vmap s <Plug>(easymotion-bd-w)
 nmap S <Plug>(easymotion-bd-e)
 vmap S <Plug>(easymotion-bd-e)
-nmap <leader>f <Plug>(easymotion-bd-f)
-nmap <leader>f <Plug>(easymotion-bd-f)
+nmap <C-f> <Plug>(easymotion-bd-f)
+vmap <C-f> <Plug>(easymotion-bd-f)
 
 " NerdTree
 nnoremap <Leader>t :NERDTreeTabsToggle<CR>
