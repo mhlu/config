@@ -5,18 +5,22 @@ set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
 Plug 'kien/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeTabsToggle' }
-Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
+Plug 'bufkill.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/delimitMate'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'junegunn/vim-easy-align'
-Plug 'scrooloose/syntastic', { 'for': ['python', 'cpp'] }
-Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
-Plug 'bufkill.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
+Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
+Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
+Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
+Plug 'argtextobj.vim',          { 'for': ['c', 'cpp', 'go', 'python'] }
+Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
+Plug 'jpalardy/vim-slime',      { 'for': ['python']}
+
 call plug#end()
 
 :if filereadable( "/etc/vimrc" )
@@ -83,8 +87,6 @@ nnoremap <leader>w :w<CR>
 vnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 vnoremap <leader>q :q<CR>
-nnoremap <leader>Q :wq<CR>
-vnoremap <leader>Q :wq<CR>
 
 " Windows
 set diffopt+=vertical
@@ -161,12 +163,12 @@ vmap <C-f> <Plug>(easymotion-bd-f)
 " NerdTree
 nnoremap <Leader>t :NERDTreeTabsToggle<CR>
 vnoremap <Leader>t :NERDTreeTabsToggle<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$']
 
 " syntastic
-let g:syntastic_mode_map = { 'mode': 'passive',
-    \ 'active_filetypes': ['python'],
-    \ 'passive_filetypes': [] }
+"let g:syntastic_mode_map = { 'mode': 'passive',
+    "\ 'active_filetypes': [],
+    "\ 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -174,9 +176,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-nnoremap <silent> <F5> :SyntasticCheck<CR>
-vnoremap <silent> <F5> :SyntasticCheck<CR>
-
 
 " airline/bufferline
 let g:bufferline_echo = 0
@@ -193,3 +192,11 @@ let g:jedi#completions_command = "<C-Space>"
 " easy align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+" slime
+"let g:slime_target = "tmux"
+"let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
+"let g:slime_python_ipython = 1
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
