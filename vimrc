@@ -4,6 +4,7 @@ set nocompatible
 set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
+
 Plug 'kien/ctrlp.vim'
 Plug 'bufkill.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -13,11 +14,14 @@ Plug 'bling/vim-bufferline'
 Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
+Plug 'osyo-manga/vim-over'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'wellle/targets.vim'
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
 Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
-Plug 'argtextobj.vim',          { 'for': ['c', 'cpp', 'go', 'python'] }
 Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
 Plug 'jpalardy/vim-slime',      { 'for': ['python']}
 
@@ -62,6 +66,8 @@ set expandtab
 set smarttab
 set autoindent
 set smartindent
+nnoremap < <
+nnoremap > >
 vnoremap < <gv
 vnoremap > >gv
 
@@ -135,8 +141,8 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-nnoremap <leader>/ :nohlsearch<CR>
-vnoremap <leader>/ :nohlsearch<CR>
+nnoremap <leader> :nohlsearch<CR>
+vnoremap <leader> :nohlsearch<CR>
 
 " Ctrl P
 nmap <C-n> :CtrlPBuffer<CR>
