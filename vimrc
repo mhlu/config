@@ -1,4 +1,4 @@
-" this file is organized as such
+" this file is organized as:
 " general config -> plugin config -> language specific config
 set nocompatible
 set shell=/bin/bash
@@ -23,7 +23,7 @@ Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
 Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
 Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
-Plug 'jpalardy/vim-slime',      { 'for': ['python']}
+Plug 'fatih/vim-go',            { 'for': ['go'] }
 
 call plug#end()
 
@@ -66,8 +66,8 @@ set expandtab
 set smarttab
 set autoindent
 set smartindent
-nnoremap < <
-nnoremap > >
+vnoremap < <<
+vnoremap > >>
 vnoremap < <gv
 vnoremap > >gv
 
@@ -141,8 +141,8 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-nnoremap <leader> :nohlsearch<CR>
-vnoremap <leader> :nohlsearch<CR>
+nnoremap <leader>/ :nohlsearch<CR>
+vnoremap <leader>/ :nohlsearch<CR>
 
 " Ctrl P
 nmap <C-n> :CtrlPBuffer<CR>
@@ -172,12 +172,13 @@ vnoremap <Leader>t :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$']
 
 " syntastic
-"let g:syntastic_mode_map = { 'mode': 'passive',
-    "\ 'active_filetypes': [],
-    "\ 'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'passive',
+    \ 'active_filetypes': [],
+    \ 'passive_filetypes': [] }
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -199,10 +200,18 @@ let g:jedi#completions_command = "<C-Space>"
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" slime
-"let g:slime_target = "tmux"
-"let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
-"let g:slime_python_ipython = 1
-
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" golang
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+au FileType go nmap gr <Plug>(go-run)
+au FileType go nmap gb <Plug>(go-build)
+au FileType go nmap <leader>gd <Plug>(go-def-vertical)
