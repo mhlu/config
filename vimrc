@@ -141,8 +141,8 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-nnoremap <leader>/ :nohlsearch<CR>
-vnoremap <leader>/ :nohlsearch<CR>
+nmap <leader>/ :nohlsearch<CR>
+vmap <leader>/ :nohlsearch<CR>
 
 " Ctrl P
 nmap <C-n> :CtrlPBuffer<CR>
@@ -167,8 +167,8 @@ nmap <C-f> <Plug>(easymotion-bd-f)
 vmap <C-f> <Plug>(easymotion-bd-f)
 
 " NerdTree
-nnoremap <Leader>t :NERDTreeTabsToggle<CR>
-vnoremap <Leader>t :NERDTreeTabsToggle<CR>
+nmap <Leader>t :NERDTreeTabsToggle<CR>
+vmap <Leader>t :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$']
 
 " syntastic
@@ -198,7 +198,7 @@ let g:jedi#completions_command = "<C-Space>"
 
 " easy align
 nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
+vmap ga <Plug>(EasyAlign)
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
