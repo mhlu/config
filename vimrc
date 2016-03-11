@@ -18,6 +18,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
+Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
@@ -202,6 +203,10 @@ xmap ga <Plug>(EasyAlign)
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" vim over
+nmap gs :OverCommandLine<CR>%s/
+vmap gs :OverCommandLine<CR>s/
 
 " golang
 let g:go_fmt_command = "goimports"
