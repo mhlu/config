@@ -164,8 +164,11 @@ nmap s <Plug>(easymotion-bd-w)
 vmap s <Plug>(easymotion-bd-w)
 nmap S <Plug>(easymotion-bd-e)
 vmap S <Plug>(easymotion-bd-e)
-nmap <C-f> <Plug>(easymotion-bd-f)
-vmap <C-f> <Plug>(easymotion-bd-f)
+nmap gf <Plug>(easymotion-bd-f)
+vmap gf <Plug>(easymotion-bd-f)
+map gj <Plug>(easymotion-j)
+map gk <Plug>(easymotion-k)
+let g:EasyMotion_startofline = 0
 
 " NerdTree
 nmap <Leader>t :NERDTreeTabsToggle<CR>

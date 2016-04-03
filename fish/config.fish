@@ -16,5 +16,5 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 
-alias matlab='/Applications/MATLAB_R2015b.app/bin/matlab -nodesktop'
+alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab -nodesktop'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
