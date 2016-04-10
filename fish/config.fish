@@ -22,3 +22,6 @@ alias py='ipython'
 
 alias matlab='/Applications/MATLAB_R2016a.app/bin/matlab -nodesktop'
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
+
+alias dm='docker-machine'
+alias d='docker'
