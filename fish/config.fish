@@ -26,3 +26,4 @@ alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/
 
 alias dm='docker-machine'
 alias d='docker'
+alias ds='docker-machine start; and docker-machine env; and eval (docker-machine env)'
