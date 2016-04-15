@@ -6,25 +6,28 @@ set shell=/bin/bash
 call plug#begin('~/.vim/plugged')
 
 Plug 'kien/ctrlp.vim'
-Plug 'bufkill.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Raimondi/delimitMate'
 Plug 'bling/vim-airline'
 Plug 'bling/vim-bufferline'
 Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
-Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
-Plug 'sjl/gundo.vim'
+Plug 'osyo-manga/vim-over' "substitue
+Plug 'Raimondi/delimitMate' "auto brackets insertion
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
-Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
 Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
 Plug 'fatih/vim-go',            { 'for': ['go'] }
+Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
+
+" testing
+
+Plug 'sjl/gundo.vim'
+Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
+Plug 'bufkill.vim'
 
 call plug#end()
 
