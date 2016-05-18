@@ -16,11 +16,12 @@ brew install fish
 echo "/usr/local/bin/fish" | sudo tee -a /etc/shells  
 chsh -s /usr/local/bin/fish
 
-# python
-brew install python3  
-pip install readline
-
 # vim
 brew install vim --override-system-vi --without-python --with-python3  
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim  
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -s ~/.config/vimrc ~/.vimrc
+
+# tmux
+brew install tmux
+ln -s ~/tmux ~/.tmux.conf

@@ -22,6 +22,8 @@ Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
 Plug 'fatih/vim-go',            { 'for': ['go'] }
 Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
+"Plug 'lervag/vimtex',           { 'for': ['tex']}
+Plug 'lervag/vimtex'
 
 " testing
 
@@ -60,6 +62,7 @@ set nrformats=
 
 " leader
 let mapleader = " "
+let maplocalleader = "\\"
 
 " format
 set colorcolumn=81
@@ -195,7 +198,7 @@ let g:syntastic_check_on_wq = 0
 let g:bufferline_echo = 0
 set laststatus=2
 
-" jedi
+"" jedi
 let g:jedi#use_splits_not_buffers = "left"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
