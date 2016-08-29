@@ -24,4 +24,4 @@ ln -s ~/.config/vimrc ~/.vimrc
 
 # tmux
 brew install tmux
-ln -s ~/tmux ~/.tmux.conf
+ln -s ~/.tmux ~/.tmux.conf

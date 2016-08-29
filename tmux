@@ -19,9 +19,6 @@ set -g set-titles on
 set -g set-titles-string '#S #I'
 setw -g automatic-rename
 
-# Status bar customization
-set -g status-utf8 on
-
 # panel
 bind -n M-j select-pane -D
 bind -n M-k select-pane -U
@@ -49,7 +46,6 @@ set -g pane-active-border-fg brightred
 
 ## Status bar design
 # status line
-set -g status-utf8 on
 set -g status-justify left
 set -g status-bg default
 set -g status-fg colour12

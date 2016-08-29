@@ -14,16 +14,15 @@ Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'wellle/targets.vim'
+Plug 'wellle/targets.vim' "more text object, eg. di2{
 Plug 'osyo-manga/vim-over' "substitue
 Plug 'Raimondi/delimitMate' "auto brackets insertion
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
+"Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
 Plug 'fatih/vim-go',            { 'for': ['go'] }
 Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
 "Plug 'lervag/vimtex',           { 'for': ['tex']}
-Plug 'lervag/vimtex'
 
 " testing
 
