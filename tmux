@@ -20,13 +20,15 @@ set -g set-titles-string '#S #I'
 setw -g automatic-rename
 
 # panel
-bind -n M-j select-pane -D
-bind -n M-k select-pane -U
-bind -n M-h select-pane -L
-bind -n M-l select-pane -R
+bind j select-pane -D
+bind k select-pane -U
+bind h select-pane -L
+bind l select-pane -R
 bind x kill-pane
 
 # windows
+bind H swap-window -t -1
+bind L swap-window -t +1
 bind v split-window -h
 bind s split-window
 bind k kill-window

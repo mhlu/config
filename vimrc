@@ -46,7 +46,6 @@ set ruler
 set ttyfast
 set showcmd
 set lazyredraw
-set clipboard+=unnamed
 set formatoptions=l
 set nostartofline
 set mousehide mouse=a
