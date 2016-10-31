@@ -14,18 +14,18 @@ Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'wellle/targets.vim' "more text object, eg. di2{
-Plug 'osyo-manga/vim-over' "substitue
-Plug 'Raimondi/delimitMate' "auto brackets insertion
+Plug 'altercation/vim-colors-solarized'
+Plug 'wellle/targets.vim'     "more text object, eg. di2{
+Plug 'osyo-manga/vim-over'    "substitue
+Plug 'Raimondi/delimitMate'   "auto brackets insertion
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-"Plug 'davidhalter/jedi-vim',    { 'for': ['python'] }
-Plug 'fatih/vim-go',            { 'for': ['go'] }
+Plug 'fatih/vim-go',            { 'for': 'go' }
+Plug 'Yggdroot/indentLine',     { 'for': 'python' }
 Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
-"Plug 'lervag/vimtex',           { 'for': ['tex']}
+Plug 'fisadev/vim-isort',       { 'for': 'python' }
 
 " testing
-
 Plug 'sjl/gundo.vim'
 Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
 Plug 'bufkill.vim'
@@ -57,6 +57,8 @@ set lazyredraw
 noremap <silent> Y y$
 set nrformats=
 
+autocmd Filetype python setlocal sw=2 ts=2 sts=2
+
 
 " leader
 let mapleader = " "
@@ -64,9 +66,9 @@ let maplocalleader = "\\"
 
 " format
 set colorcolumn=81
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set smarttab
 set autoindent
@@ -78,10 +80,13 @@ vnoremap > >gv
 
 " syntax
 syntax enable
+"set background=light
+"colorscheme solarized
 
-"display tabs and trailing spaces
+"display tab, indent,  and trailing spaces
 set list
 set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+let g:indentLine_color_term = 239
 
 " copy/paste
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]''`]`'
@@ -157,7 +162,6 @@ vmap <C-n> :CtrlPBuffer<CR>
 nmap <leader>k :BD<CR>
 vmap <leader>k :BD<CR>
 
-
 " Easy Motion
 let g:EasyMotion_do_mapping=0
 hi link EasyMotionTarget ErrorMsg
@@ -196,14 +200,6 @@ let g:syntastic_check_on_wq = 0
 let g:bufferline_echo = 0
 set laststatus=2
 
-"" jedi
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#auto_initialization = 0
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#completions_command = "<C-Space>"
-
 " easy align
 nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
@@ -214,16 +210,3 @@ nmap <F8> :TagbarToggle<CR>
 " vim over
 nmap gs :OverCommandLine<CR>%s/
 vmap gs :OverCommandLine<CR>s/
-
-" golang
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-au FileType go nmap gr <Plug>(go-run)
-au FileType go nmap gb <Plug>(go-build)
-au FileType go nmap <leader>gd <Plug>(go-def-vertical)
