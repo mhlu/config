@@ -34,9 +34,9 @@ bind s split-window
 bind k kill-window
 
 # copy paste
-setw -g mode-keys vi
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-selection
+# setw -g mode-keys vi
+# bind -t vi-copy 'v' begin-selection
+# bind -t vi-copy 'y' copy-selection
 
 ######################
 ### DESIGN CHANGES ###

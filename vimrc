@@ -28,7 +28,6 @@ Plug 'fisadev/vim-isort',       { 'for': 'python' }
 " testing
 Plug 'sjl/gundo.vim'
 Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
-Plug 'bufkill.vim'
 
 call plug#end()
 
