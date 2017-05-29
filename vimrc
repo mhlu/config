@@ -21,13 +21,14 @@ Plug 'Raimondi/delimitMate'   "auto brackets insertion
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
 Plug 'fatih/vim-go',            { 'for': 'go' }
-Plug 'Yggdroot/indentLine',     { 'for': 'python' }
-Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
+"Plug 'Yggdroot/indentLine',     { 'for': 'python' }
+"Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
 Plug 'fisadev/vim-isort',       { 'for': 'python' }
+Plug 'tpope/vim-rails',         { 'for': 'ruby' }
 
 " testing
-Plug 'sjl/gundo.vim'
-Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
+"Plug 'sjl/gundo.vim'
+"Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
 
 call plug#end()
 
@@ -56,9 +57,6 @@ set lazyredraw
 noremap <silent> Y y$
 set nrformats=
 
-autocmd Filetype python setlocal sw=2 ts=2 sts=2
-
-
 " leader
 let mapleader = " "
 let maplocalleader = "\\"
@@ -76,6 +74,9 @@ vnoremap < <<
 vnoremap > >>
 vnoremap < <gv
 vnoremap > >gv
+nnoremap <localleader>s :%s/\s\+$//<CR>
+vnoremap <localleader>s :%s/\s\+$//<CR>
+
 
 " syntax
 syntax enable
@@ -171,29 +172,31 @@ nmap s <Plug>(easymotion-bd-w)
 vmap s <Plug>(easymotion-bd-w)
 nmap S <Plug>(easymotion-bd-e)
 vmap S <Plug>(easymotion-bd-e)
-nmap gf <Plug>(easymotion-bd-f)
-vmap gf <Plug>(easymotion-bd-f)
 map gj <Plug>(easymotion-j)
 map gk <Plug>(easymotion-k)
 let g:EasyMotion_startofline = 0
 
 " NerdTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | execute 'NERDTreeTabsToggle' | endif
 nmap <Leader>t :NERDTreeTabsToggle<CR>
 vmap <Leader>t :NERDTreeTabsToggle<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$']
+nmap <Leader>f :NERDTreeTabsFind<CR>
+vmap <Leader>f :NERDTreeTabsFind<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', '\.d$']
 
 " syntastic
-let g:syntastic_mode_map = { 'mode': 'passive',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': [] }
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_mode_map = { 'mode': 'passive',
+    "\ 'active_filetypes': [],
+    "\ 'passive_filetypes': [] }
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " airline/bufferline
 let g:bufferline_echo = 0
@@ -204,7 +207,7 @@ nmap ga <Plug>(EasyAlign)
 vmap ga <Plug>(EasyAlign)
 
 " tagbar
-nmap <F8> :TagbarToggle<CR>
+"nmap <F8> :TagbarToggle<CR>
 
 " vim over
 nmap gs :OverCommandLine<CR>%s/
