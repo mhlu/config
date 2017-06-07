@@ -1,9 +1,29 @@
 [user]
-	name = mhlu
-	email = mhlu@uwaterloo.ca
+  name = mhlu
+  email = mhlu@uwaterloo.ca
 [core]
-	editor = vim
+  editor = vim
 [push]
-	default = simple
+  default = simple
 [pull]
-	rebase = true
+  rebase = true
+[difftool]
+  prompt = false
+  tool = vimdiff
+[merge]
+  tool = vimdiff
+
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  dl = diff --name-only
+  unstage = reset HEAD --
+  amend = commit --amend
+  create-remote = !git push --set-upstream origin `git current-branch`
+
+  hist = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  hist-date = log --pretty=format:\"%C(yellow) %h %Creset %ad | %s%d [%an]\" --graph --date=short
+  hist-full = log --graph \
+    --format='format:%C(yellow)%h%C(reset) %C(blue)[%an]%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' \
+    --date-order
