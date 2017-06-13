@@ -8,8 +8,8 @@ ln -s ~/.config/gitconfig ~/.gitconfig
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # karabiner - broken on Sierra
-# brew install Cask/caskoom/karabiner
-# sh ~/.config/karabiner.sh
+brew install Cask/caskoom/karabiner
+sh ~/.config/karabiner.sh
 
 # fish
 brew install fish  

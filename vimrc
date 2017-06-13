@@ -17,18 +17,22 @@ Plug 'tpope/vim-repeat'
 Plug 'altercation/vim-colors-solarized'
 Plug 'wellle/targets.vim'     "more text object, eg. di2{
 Plug 'osyo-manga/vim-over'    "substitue
-Plug 'Raimondi/delimitMate'   "auto brackets insertion
+Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
 Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-Plug 'fatih/vim-go',            { 'for': 'go' }
-"Plug 'Yggdroot/indentLine',     { 'for': 'python' }
-"Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
-Plug 'fisadev/vim-isort',       { 'for': 'python' }
 Plug 'tpope/vim-rails',         { 'for': 'ruby' }
+Plug 'alvan/vim-closetag'
+Plug 'vim-scripts/matchit.zip'
+
+" useful but disabled
+"Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
+"Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
+"Plug 'fisadev/vim-isort',       { 'for': 'python' }
+" Plug 'fatih/vim-go',            { 'for': 'go' }
+
 
 " testing
 "Plug 'sjl/gundo.vim'
-"Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
 
 call plug#end()
 
@@ -212,3 +216,6 @@ vmap ga <Plug>(EasyAlign)
 " vim over
 nmap gs :OverCommandLine<CR>%s/
 vmap gs :OverCommandLine<CR>s/
+
+" close tags
+let g:closetag_filenames = "*.html,*.html.erb"
