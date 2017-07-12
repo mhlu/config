@@ -5,34 +5,42 @@ set shell=/bin/bash
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'sjl/gundo.vim'
+Plug 'bronson/vim-visual-star-search'
+
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'ton/vim-bufsurf'
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'bling/vim-airline'
-Plug 'bling/vim-bufferline'
+Plug 'alvan/vim-closetag'
+Plug 'easymotion/vim-easymotion'
 Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'junegunn/vim-easy-align'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'altercation/vim-colors-solarized'
-Plug 'wellle/targets.vim'     "more text object, eg. di2{
-Plug 'osyo-manga/vim-over'    "substitue
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdtree',     { 'on': 'NERDTreeTabsToggle' }
-Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeTabsToggle' }
-Plug 'tpope/vim-rails',         { 'for': 'ruby' }
-Plug 'alvan/vim-closetag'
+Plug 'osyo-manga/vim-over'       "substitue
+Plug 'rhysd/clever-f.vim'
+Plug 'rstacruz/vim-closer'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree',      { 'on': 'NERDTreeTabsToggle' }
+Plug 'jistr/vim-nerdtree-tabs',  { 'on': 'NERDTreeTabsToggle' }
 Plug 'vim-scripts/matchit.zip'
+Plug 'wellle/targets.vim'        "more text object, eg. di2{
+Plug 'zefei/vim-wintabs'
+Plug 'yggdroot/indentline',      { 'for': ['coffee'] }
+Plug 'tpope/vim-endwise',        { 'for': 'ruby'  }
+Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 
-" useful but disabled
+" useful but unneeded for now
+" Plug 'fisadev/vim-isort',       { 'for': 'python' }
 "Plug 'majutsushi/tagbar',       { 'for': ['c', 'cpp', 'go', 'python'] }
 "Plug 'scrooloose/syntastic',    { 'for': ['c', 'cpp', 'go', 'python'] }
-"Plug 'fisadev/vim-isort',       { 'for': 'python' }
-" Plug 'fatih/vim-go',            { 'for': 'go' }
-
 
 " testing
-"Plug 'sjl/gundo.vim'
+"Plug 'kana/vim-textobj-user'
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
@@ -60,6 +68,8 @@ set cursorline
 set lazyredraw
 noremap <silent> Y y$
 set nrformats=
+vnoremap ; :
+nnoremap ; :
 
 " leader
 let mapleader = " "
@@ -78,14 +88,10 @@ vnoremap < <<
 vnoremap > >>
 vnoremap < <gv
 vnoremap > >gv
+" remove trailing while space
 nnoremap <localleader>s :%s/\s\+$//<CR>
 vnoremap <localleader>s :%s/\s\+$//<CR>
-
-
-" syntax
 syntax enable
-"set background=light
-"colorscheme solarized
 
 "display tab, indent,  and trailing spaces
 set list
@@ -137,18 +143,16 @@ vnoremap H ^
 nnoremap L g_
 vnoremap L g_
 
-" Buffer
+" Buffer - do backup in git
 set nobackup
 set nowritebackup
 set noswapfile
 set autoread
 set hidden
 set confirm
-nmap <leader>p :bp<CR>
-vmap <leader>p :bp<CR>
-nmap <leader>n :bn<CR>
-vmap <leader>n :bn<CR>
-command W w !sudo tee % > /dev/null
+if !exists(':W')
+  command W w !sudo tee % > /dev/null
+endif
 
 " Search
 set hlsearch
@@ -161,6 +165,13 @@ vmap <leader>/ :nohlsearch<CR>
 " Ctrl P
 nmap <C-n> :CtrlPBuffer<CR>
 vmap <C-n> :CtrlPBuffer<CR>
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=10
+let g:ctrlp_dotfiles=0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'bin$\|\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(pyc|o|d|so|a)$',
+  \ }
 
 " Buff Kill
 nmap <leader>k :BD<CR>
@@ -187,7 +198,7 @@ nmap <Leader>t :NERDTreeTabsToggle<CR>
 vmap <Leader>t :NERDTreeTabsToggle<CR>
 nmap <Leader>f :NERDTreeTabsFind<CR>
 vmap <Leader>f :NERDTreeTabsFind<CR>
-let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', '\.d$']
+let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', '\.d$', '\.so$', '\.a$']
 
 " syntastic
 "let g:syntastic_mode_map = { 'mode': 'passive',
@@ -202,9 +213,11 @@ let NERDTreeIgnore=['\.pyc$', '\~$', '\.o$', '\.d$']
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
 
-" airline/bufferline
-let g:bufferline_echo = 0
-set laststatus=2
+" bufsurf - literally why isn't this a standard vim feature???
+nmap <leader>p :BufSurfBack<CR>
+vmap <leader>p :BufSurfBack<CR>
+nmap <leader>n :BufSurfForward<CR>
+vmap <leader>n :BufSurfForward<CR>
 
 " easy align
 nmap ga <Plug>(EasyAlign)
@@ -219,3 +232,22 @@ vmap gs :OverCommandLine<CR>s/
 
 " close tags
 let g:closetag_filenames = "*.html,*.html.erb"
+
+" gundo
+nnoremap <F5> :GundoToggle<CR>
+
+" wintab
+nnoremap gh gT
+nnoremap gl gt
+nnoremap gj :WintabsPrevious <CR>
+nnoremap gk :WintabsNext<CR>
+nnoremap gc :WintabsClose
+nnoremap go :WindtabsOpen
+nnoremap gC :WindtabsCloseWindow
+nnoremap gO :WindtabsOpenWindow
+command! Tabc WintabsCloseVimtab
+command! Tabo WintabsOnlyVimtab
+let g:wintabs_display = 'statusline'
+let g:wintabs_ui_show_vimtab_name = 1
+let g:wintabs_ui_sep_inbetween = '$'
+let g:wintabs_ui_sep_rightmost = ' '

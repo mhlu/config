@@ -16,7 +16,10 @@
 [alias]
   st = status
   ci = commit
+  cm = commit -m
   co = checkout
+  br = branch
+  df = diff
   dl = diff --name-only
   unstage = reset HEAD --
   amend = commit --amend
