@@ -29,14 +29,14 @@ bind x kill-pane
 # windows
 bind H swap-window -t -1
 bind L swap-window -t +1
-bind v split-window -h
-bind s split-window
-bind k kill-window
+bind s split-window -h
+bind i split-window
+bind X kill-window
 
 # copy paste
-# setw -g mode-keys vi
-# bind -t vi-copy 'v' begin-selection
-# bind -t vi-copy 'y' copy-selection
+#setw -g mode-keys vi
+#bind -t vi-copy 'v' begin-selection
+#bind -t vi-copy 'y' copy-selection
 
 ######################
 ### DESIGN CHANGES ###
@@ -46,7 +46,7 @@ bind k kill-window
 set -g pane-border-fg black
 set -g pane-active-border-fg brightred
 
-## Status bar design
+## Stjtus bar design
 # status line
 set -g status-justify left
 set -g status-bg default
@@ -92,18 +92,16 @@ setw -g clock-mode-colour colour135
 setw -g mode-attr bold
 setw -g mode-fg colour196
 setw -g mode-bg colour238
-
 # }
-# The panes {
 
+# The panes {
 set -g pane-border-bg colour235
 set -g pane-border-fg colour238
 set -g pane-active-border-bg colour236
 set -g pane-active-border-fg colour51
-
 # }
-# The statusbar {
 
+# The statusbar {
 set -g status-position bottom
 set -g status-bg colour234
 set -g status-fg colour137
@@ -126,12 +124,10 @@ setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244
 setw -g window-status-bell-attr bold
 setw -g window-status-bell-fg colour255
 setw -g window-status-bell-bg colour1
-
 # }
-# The messages {
 
+# The messages {
 set -g message-attr bold
 set -g message-fg colour232
 set -g message-bg colour166
-
 # }

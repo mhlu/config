@@ -1,5 +1,4 @@
-set -x PIP_REQUIRE_VIRTUALENV true
-set -x PATH /usr/local/bin /usr/local/sbin $PATH
+set -x PATH /usr/local/bin $PATH
 
 set -x EDITOR vim
 
@@ -10,15 +9,17 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias ln='ln -i'
 
-alias v='vim'
+alias g='git'
+alias v='nvim'
+alias py='ipython3'
 alias l='ls'
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 
 alias jsc='/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc'
-status --is-interactive; and source (rbenv init -|psub)
 
+#status --is-interactive; and source (rbenv init -|psub)
 #alias dm='docker-machine'
 #alias d='docker'
 #alias ds='docker-machine start; and docker-machine env; and eval (docker-machine env)'
